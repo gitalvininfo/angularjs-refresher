@@ -5,13 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="angular.min.js"></script>
+    <script src="angular.js"></script>
     <script src="Script.js"></script>
 </head>
 
 <body>
     <div ng-controller="myController">
-        {{message}}
+        <div>
+            First name: {{employee.firstName}}
+        </div>
+        <div>
+            Last name: {{employee.lastName}}
+        </div>
+        <div>
+            Gender: {{employee.gender}}
+        </div>
     </div>
 </body>
 
