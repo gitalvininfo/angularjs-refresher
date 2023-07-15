@@ -9,6 +9,24 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="angular.js"></script>
     <script src="Script.js"></script>
+
+    <style>
+        .arrow-up {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 10px solid black;
+        }
+
+        .arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 10px solid black;
+        }
+    </style>
 </head>
 
 <body>
@@ -16,23 +34,30 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div ng-controller="myController">
-                    <p>Order By: </p>
-                    <select class="form-select" ng-model="sortColumn">
-                        <option ng-repeat="sortOption in sortOptions" value="{{sortOption.value}}">
-                            {{sortOption.label}}
-                        </option>
-                    </select>
+
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Date of Birth</th>
-                                <th>Gender</th>
-                                <th>Salary</th>
+                                <th ng-click="sortData('name')">
+                                    Name
+                                    <span ng-class="getSortClass('name')"></span>
+                                </th>
+                                <th ng-click="sortData('dateOfBirth')">
+                                    Date of Birth
+                                    <span ng-class="getSortClass('dateOfBirth')"></span>
+                                </th>
+                                <th ng-click="sortData('gender')">
+                                    Gender
+                                    <span ng-class="getSortClass('gender')"></span>
+                                </th>
+                                <th ng-click="sortData('salary')">
+                                    Salary
+                                    <span ng-class="getSortClass('salary')"></span>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="employee in employees | orderBy: sortColumn">
+                            <tr ng-repeat="employee in employees | orderBy: sortColumn : reverseSort">
                                 <td>{{employee.name}}</td>
                                 <td>{{employee.dateOfBirth | date: 'dd/MM/yyyy'}}</td>
                                 <td>{{employee.gender}}</td>
