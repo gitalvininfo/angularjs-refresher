@@ -9,6 +9,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="angular.js"></script>
     <script src="Script.js"></script>
+    <script src="stringService.js"></script>
 
     <style>
         .arrow-up {
@@ -35,22 +36,20 @@
             <div class="col-md-8">
                 <div ng-controller="myController">
                     <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>User Id</th>
-                                <th>Id</th>
-                                <th>Title</th>
-                                <th>Completed</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="todo in todos">
-                                <td>{{todo.userId}}</td>
-                                <td>{{todo.id}}</td>
-                                <td>{{todo.title}}</td>
-                                <td>{{todo.completed}}</td>
-                            </tr>
-                        </tbody>
+                        <tr>
+                            <td>Your String</td>
+                            <td><input ng-model="input" type="text" class="form-control" /></td>
+                        </tr>
+                        <tr>
+                            <td>Result</td>
+                            <td><input ng-model="output" type="text" class="form-control" /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button ng-click="transformString(input)" class="btn btn-primary" type="button">Process string</button>
+                            </td>
+                        </tr>
                     </table>
                 </div>
             </div>
