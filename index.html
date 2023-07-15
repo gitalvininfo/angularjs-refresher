@@ -16,26 +16,27 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div ng-controller="myController">
-                    <p>Rows to display</p>
-                    <input type="number" step="1" min="0" max="5" ng-model="rowLimit" class="form-control mb-3">
+                    <p>Order By: </p>
+                    <select class="form-select" ng-model="sortColumn">
+                        <option ng-repeat="sortOption in sortOptions" value="{{sortOption.value}}">
+                            {{sortOption.label}}
+                        </option>
+                    </select>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>Name</th>
                                 <th>Date of Birth</th>
                                 <th>Gender</th>
-                                <th>Salary (number)</th>
-                                <th>Salary (currency)</th>
+                                <th>Salary</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- limitTo: YOUR_LIMIT : STARTS_WITH -->
-                            <tr ng-repeat="employee in employees | limitTo: rowLimit">
-                                <td>{{employee.name | uppercase}}</td>
+                            <tr ng-repeat="employee in employees | orderBy: sortColumn">
+                                <td>{{employee.name}}</td>
                                 <td>{{employee.dateOfBirth | date: 'dd/MM/yyyy'}}</td>
-                                <td>{{employee.gender | lowercase}}</td>
-                                <td>{{employee.salary | number: 2}}</td>
-                                <td>{{employee.salary | currency}}</td>
+                                <td>{{employee.gender}}</td>
+                                <td>{{employee.salary}}</td>
                             </tr>
                         </tbody>
                     </table>

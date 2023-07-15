@@ -3,9 +3,9 @@
 var myApp = angular.module("myModule", []);
 
 myApp.controller("myController", function ($scope) {
-    // filter can do 3 things, format, sort, and filter
-
-
+    // | orderBy : expression : reverse
+    // to sort in asc order, set reverse to false
+    // to sort in desc order, set reverse to true
     var employees = [
         { name: "Ben", dateOfBirth: new Date("November 23, 1980"), gender: "Male", salary: 55000.788 },
         { name: "Sara", dateOfBirth: new Date("May 05, 1970"), gender: "Female", salary: 68000 },
@@ -13,7 +13,15 @@ myApp.controller("myController", function ($scope) {
         { name: "Todd", dateOfBirth: new Date("December 30, 1983"), gender: "Male", salary: 60000 },
     ]
 
+    var sortOptions = [
+        { value: "name", label: "Name ASC" },
+        { value: "gender", label: "Gender ASC" },
+        { value: "dateOfBirth", label: "Date of Birth ASC" },
+        { value: "-salary", label: "Salary DESC" },
+    ]
+
     $scope.employees = employees;
-    $scope.rowLimit = 3;
+    $scope.sortColumn = "name";
+    $scope.sortOptions = sortOptions;
 
 });
