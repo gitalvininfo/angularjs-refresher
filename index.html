@@ -34,34 +34,23 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div ng-controller="myController">
-
+                    <p>Search</p>
+                    <input type="text" class="form-control mb-3" ng-model="searchText.city" />
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th ng-click="sortData('name')">
-                                    Name
-                                    <span ng-class="getSortClass('name')"></span>
-                                </th>
-                                <th ng-click="sortData('dateOfBirth')">
-                                    Date of Birth
-                                    <span ng-class="getSortClass('dateOfBirth')"></span>
-                                </th>
-                                <th ng-click="sortData('gender')">
-                                    Gender
-                                    <span ng-class="getSortClass('gender')"></span>
-                                </th>
-                                <th ng-click="sortData('salary')">
-                                    Salary
-                                    <span ng-class="getSortClass('salary')"></span>
-                                </th>
+                                <th>Name</th>
+                                <th>Gender</th>
+                                <th>Salary</th>
+                                <th>City</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="employee in employees | orderBy: sortColumn : reverseSort">
+                            <tr ng-repeat="employee in employees | filter: searchText">
                                 <td>{{employee.name}}</td>
-                                <td>{{employee.dateOfBirth | date: 'dd/MM/yyyy'}}</td>
                                 <td>{{employee.gender}}</td>
                                 <td>{{employee.salary}}</td>
+                                <td>{{employee.city}}</td>
                             </tr>
                         </tbody>
                     </table>
