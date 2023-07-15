@@ -9,6 +9,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="angular.js"></script>
     <script src="Script.js"></script>
+    <script src="Filters.js"></script>
 
     <style>
         .arrow-up {
@@ -34,23 +35,19 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div ng-controller="myController">
-                    <p>Search</p>
-                    <input type="text" class="form-control mb-3" ng-model="searchText" placeholder="search name or city" />
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>Name</th>
                                 <th>Gender</th>
                                 <th>Salary</th>
-                                <th>City</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="employee in employees | filter: search">
+                            <tr ng-repeat="employee in employees">
                                 <td>{{employee.name}}</td>
-                                <td>{{employee.gender}}</td>
+                                <td>{{employee.gender | gender}}</td>
                                 <td>{{employee.salary}}</td>
-                                <td>{{employee.city}}</td>
                             </tr>
                         </tbody>
                     </table>
