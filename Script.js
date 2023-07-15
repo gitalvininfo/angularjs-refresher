@@ -3,11 +3,32 @@
 var myApp = angular.module("myModule", []);
 
 myApp.controller("myController", function ($scope) {
-    var employee = {
-        firstName: 'Ben',
-        lastName: 'Hastings',
-        gender: 'Male'
-    }
+    var countries = [
+        {
+            name: "UK",
+            cities: [
+                { name: "London" },
+                { name: "Manchester" },
+                { name: "Birmingham" },
+            ]
+        },
+        {
+            name: "USA",
+            cities: [
+                { name: "Los Angeles" },
+                { name: "Chicago" },
+                { name: "Houston" },
+            ]
+        },
+        {
+            name: "India",
+            cities: [
+                { name: "Hyderabad" },
+                { name: "Chennai" },
+                { name: "Mumbai" },
+            ]
+        },
+    ]
 
-    $scope.employee = employee
+    $scope.countries = countries
 });

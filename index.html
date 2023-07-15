@@ -11,48 +11,17 @@
 
 <body>
     <div ng-controller="myController">
-        <table>
-            <tr>
-                <td>First Name</td>
-                <td>
-                    <input type="text" ng-model="employee.firstName">
-                </td>
-            </tr>
-            <tr>
-                <td>Last Name</td>
-                <td>
-                    <input type="text" ng-model="employee.lastName">
-                </td>
-            </tr>
-            <tr>
-                <td>Gender</td>
-                <td>
-                    <input type="text" ng-model="employee.gender">
-                </td>
-            </tr>
-        </table>
-
-        <br />
-        <table>
-            <tr>
-                <td>First Name</td>
-                <td>
-                    {{employee.firstName}}
-                </td>
-            </tr>
-            <tr>
-                <td>Last Name</td>
-                <td>
-                    {{employee.lastName}}
-                </td>
-            </tr>
-            <tr>
-                <td>Gender</td>
-                <td>
-                    {{employee.gender}}
-                </td>
-            </tr>
-        </table>
+        <ul>
+            <li ng-repeat="country in countries" ng-init="parentIndex=$index">
+                {{country.name}} - Index = {{$index}}
+                <ul ng-repeat="city in country.cities">
+                    <li>
+                        <!-- $parent.$index -->
+                        {{city.name}} - Parent Index = {{parentIndex}}, Index = {{$index}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
 </body>
 
