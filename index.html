@@ -9,7 +9,6 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="angular.js"></script>
     <script src="Script.js"></script>
-    <script src="Filters.js"></script>
 
     <style>
         .arrow-up {
@@ -35,12 +34,24 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div ng-controller="myController">
-                    Select
-                    <select ng-model="employeeView">
-                        <option value="EmployeeTable.html">Table</option>
-                        <option value="EmployeeList.html">List</option>
-                    </select>
-                    <div ng-include="employeeView"></div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>User Id</th>
+                                <th>Id</th>
+                                <th>Title</th>
+                                <th>Completed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="todo in todos">
+                                <td>{{todo.userId}}</td>
+                                <td>{{todo.id}}</td>
+                                <td>{{todo.title}}</td>
+                                <td>{{todo.completed}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
