@@ -16,25 +16,26 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div ng-controller="myController">
+                    <p>Rows to display</p>
+                    <input type="number" step="1" min="0" max="5" ng-model="rowLimit" class="form-control mb-3">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Likes</th>
-                                <th>Dislikes</th>
-                                <th>Action</th>
+                                <th>Date of Birth</th>
+                                <th>Gender</th>
+                                <th>Salary (number)</th>
+                                <th>Salary (currency)</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="technology in technologies">
-                                <td>{{technology.name}}</td>
-                                <td>{{technology.likes}}</td>
-                                <td>{{technology.dislikes}}</td>
-                                <td>
-                                    <button class="btn btn-primary" ng-click="incrementLikes(technology)">Like</button>
-                                    <button class="btn btn-danger"
-                                        ng-click="incrementDislikes(technology)">Dislike</button>
-                                </td>
+                            <!-- limitTo: YOUR_LIMIT : STARTS_WITH -->
+                            <tr ng-repeat="employee in employees | limitTo: rowLimit">
+                                <td>{{employee.name | uppercase}}</td>
+                                <td>{{employee.dateOfBirth | date: 'dd/MM/yyyy'}}</td>
+                                <td>{{employee.gender | lowercase}}</td>
+                                <td>{{employee.salary | number: 2}}</td>
+                                <td>{{employee.salary | currency}}</td>
                             </tr>
                         </tbody>
                     </table>
