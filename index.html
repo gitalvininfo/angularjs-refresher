@@ -35,19 +35,30 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div ng-controller="myController">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" ng-model="hideSalary" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Hide salary
+                        </label>
+                    </div>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>Name</th>
                                 <th>Gender</th>
                                 <th>Salary</th>
+                                <th>City</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="employee in employees">
                                 <td>{{employee.name}}</td>
-                                <td>{{employee.gender | gender}}</td>
-                                <td>{{employee.salary}}</td>
+                                <td>{{employee.gender}}</td>
+                                <td>
+                                    <span ng-hide="hideSalary">{{employee.salary}}</span>
+                                    <span ng-show="hideSalary">#####</span>
+                                </td>
+                                <td>{{employee.city}}</td>
                             </tr>
                         </tbody>
                     </table>
