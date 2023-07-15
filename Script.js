@@ -2,10 +2,16 @@
 
 var app = angular.module("myModule", []);
 
-app.controller("myController", function ($scope, $http) {
+app.controller("myController", function ($scope, $http, $log) {
 
-    $http.get("https://jsonplaceholder.typicode.com/todos/")
+    $http({
+        method: 'GET',
+        url: "https://jsonplaceholder.typicode.com/todos/"
+    })
         .then(function (response) {
-            $scope.todos = response.data
+            $scope.todos = response.data;
+            $log.info(response)
+        }, function (response) {
+            $log.info(response)
         });
 });
