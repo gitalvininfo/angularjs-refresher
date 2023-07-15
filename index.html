@@ -35,24 +35,12 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div ng-controller="myController">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Index</th>
-                                <th>Name</th>
-                                <th>Gender</th>
-                                <th>Salary</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="employee in employees" ng-init="parentIndex=$index">
-                                <td>{{parentIndex}}</td>
-                                <td>{{employee.name}}</td>
-                                <td>{{employee.gender}}</td>
-                                <td>{{employee.salary}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    Select
+                    <select ng-model="employeeView">
+                        <option value="EmployeeTable.html">Table</option>
+                        <option value="EmployeeList.html">List</option>
+                    </select>
+                    <div ng-include="employeeView"></div>
                 </div>
             </div>
         </div>

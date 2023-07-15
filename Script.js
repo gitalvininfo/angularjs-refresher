@@ -12,5 +12,6 @@ app.controller("myController", function ($scope) {
     ]
 
     $scope.employees = employees;
+    $scope.employeeView = 'EmployeeTable.html';
 
 });
